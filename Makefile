@@ -1,4 +1,4 @@
-CFLAGS		+=	-O3 -lbz2
+CFLAGS		+=	-O3 -lbz2 -Du_char="unsigned char"
 
 PREFIX		?=	/usr/local
 INSTALL_PROGRAM	?=	${INSTALL} -c -s -m 555
@@ -10,6 +10,6 @@ bspatch:	bspatch.c
 
 install:
 	${INSTALL_PROGRAM} bsdiff bspatch ${PREFIX}/bin
-.ifndef WITHOUT_MAN
-	${INSTALL_MAN} bsdiff.1 bspatch.1 ${PREFIX}/man/man1
-.endif
+	.ifndef WITHOUT_MAN
+		${INSTALL_MAN} bsdiff.1 bspatch.1 ${PREFIX}/man/man1
+	.endif
